@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<form action="" [formGroup]="postForm" (ngSubmit)="submitNewpost()">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-10">
+                <input type="text" id="postTitle" placeholder="Title" class="col-12 " formControlName="postTitle" />
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-box-arrow-in-right"></i>&nbsp;Publish
+                </button>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-10">
+                <!-- <angular-editor [config]="config" id="postBody" formControlName="postBody"></angular-editor> -->
+                <!-- <input type="file" id="postBody" class="PostBody col-12 border border-warning" placeholder="Enter yout text here...."  formControlName="postBody" style="height: 30rem;"> -->
+                <!-- <input type="file" id="image" formControlName="image"> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 ">
+                <angular-editor [config]="config" id="postBody" formControlName="postBody"></angular-editor>
+                <!-- <textarea type="text" id="postBody" class="PostBody form-control col-12 border border-warning" placeholder="Enter yout text here...."  formControlName="postBody" style="height: 20rem;"></textarea> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <input type="hidden" id="createdBy" class="form-control" formControlName="createdBy">
+            </div>
+        </div>
+        
+    </div>
+</form>
+<app-footer class="fixed-bottom"></app-footer>

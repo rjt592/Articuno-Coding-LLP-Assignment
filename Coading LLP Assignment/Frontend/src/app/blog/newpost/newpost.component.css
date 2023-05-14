@@ -1,0 +1,34 @@
+
+.lowerdiv{
+    background-color: silver;
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: blue;
+    position: relative;
+    text-align: left;
+    vertical-align: text-top;
+  }
+  input:focus {
+    border-color: green;
+    outline: 1px dotted #000
+  }
+
+  input::placeholder{
+    position: absolute;    
+  }
+
+  .PostBody{
+    width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  }
+
+ 

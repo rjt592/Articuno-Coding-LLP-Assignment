@@ -1,0 +1,21 @@
+
+<div *ngIf="Post$ | async as Posts">
+    <div class="col-12 mt-5 p-3" style="border: 1px solid #ffc107; border-radius: 5px;" *ngFor="let Post of Posts">
+        <div class="row">
+            <div class="col-1">
+                <div style="border: 1px solid #111; padding: 30px; margin-left: 8px; border-radius: 5px;"></div>
+            </div>
+            <div class="col-9 d-flex flex-column">
+                <div class="fs-4 fw-bold">
+                    <label>{{Post.postTitle}}</label>
+                </div>
+                <label>Published - {{Post.createdOn | date: 'medium'}}</label>
+            </div>
+            <div class="col-2 text-end">
+                <a href="viewpost" class="btn btn-outline-primary btn-sm mb-1" target="_blank">View Post</a><br />
+                <a href="editpost" class="btn btn-outline-secondary btn-sm">Edit Post&nbsp;</a>
+            </div>
+        </div>
+    </div>
+</div>
+

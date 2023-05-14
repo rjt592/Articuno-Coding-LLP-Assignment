@@ -1,0 +1,12 @@
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: blue;
+    position: relative;
+    text-align: left;
+    vertical-align: text-top;
+  }
+  input:focus {
+    border-color: green;
+    outline: 1px dotted #000
+  }

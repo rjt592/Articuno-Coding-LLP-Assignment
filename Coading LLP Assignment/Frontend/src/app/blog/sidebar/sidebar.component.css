@@ -1,0 +1,13 @@
+li{
+    text-decoration: none;
+    list-style: none;    
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    /* background-color: #F0F3F4; */
+    border-radius: 20px;
+}

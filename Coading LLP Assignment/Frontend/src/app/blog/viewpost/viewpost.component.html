@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row d-flex shadow justify-content-center bg-white my-5 ">
+        <div class=" bg-dark mb-3">
+            <ul class="text-white d-flex fs-5 fw-bold m-1">
+                <li>Home</li>
+                <li>Service</li>
+                <li>Contect Us</li>
+            </ul>
+        </div>
+        <div class="search-hero">
+            <input type="text" class="form-control" name="search"  autocomplete="off" placeholder="Start Searching" [(ngModel)]="searchText" >
+        </div>
+        <div class="col-10" *ngIf="Post$ | async as Posts">
+            <div class="row my-3 border border-primary border-4 rounded-3 p-2" *ngFor="let post of Posts | filter: searchText | paginate: 
+            { itemsPerPage: 4, currentPage: p }">
+                <div class="d-flex flex-row justify-content-between">
+                    <p class="fs-4 fw-bold">{{post.postTitle}}</p>
+                    <p><b> Published : </b>{{post.createdOn | date: 'medium'}}</p>
+                </div>
+                <div [innerHTML]="post.postBody"></div>
+            </div>
+            <pagination-controls (pageChange)="p = $event" class="float-end"></pagination-controls>
+        </div>
+    </div>
+</div>
+
