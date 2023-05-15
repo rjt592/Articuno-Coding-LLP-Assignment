@@ -14,9 +14,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostsComponent {
 
   Post$ = new Observable<postSchema[]>;
-  id : any
+  id : any;
   
-
+  editpostForm : any = this.fb.group({
+    postTitle: new FormControl('',[Validators.required]),
+    postBody: new FormControl('',[Validators.required]),
+    createdBy: new FormControl('ajay@gmail.com',[Validators.required])
+  })
   
   
   constructor(
@@ -26,7 +30,16 @@ export class PostsComponent {
     private route : ActivatedRoute
     ){}
 
-
+    config: AngularEditorConfig = {
+      editable: true,
+      spellcheck: true,
+      height: '25rem',
+      minHeight: '15rem',
+      placeholder: 'Enter text here...',
+      translate: 'no',
+      defaultParagraphSeparator: 'p',
+      defaultFontName: 'Arial',
+    };
   
 
 
@@ -35,7 +48,16 @@ export class PostsComponent {
     console.log(this.Post$);
   }
 
-  
+  editPost(){
+    this.id = this.route.snapshot.paramMap.get("_id");
+    console.log(this.id);
+    if(this.editpostForm.valid){
+      this.blogService.editPost(this.editpostForm.value, this.id).subscribe(res=>{
+        this.editpostForm.reset();
+        this.router.navigate(["main"]);
+      })
+    }
+  }
 
   
 

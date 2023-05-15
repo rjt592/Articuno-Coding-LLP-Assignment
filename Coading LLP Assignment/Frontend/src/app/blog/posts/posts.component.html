@@ -1,4 +1,3 @@
-
 <div *ngIf="Post$ | async as Posts">
     <div class="col-12 mt-5 p-3" style="border: 1px solid #ffc107; border-radius: 5px;" *ngFor="let Post of Posts">
         <div class="row">
@@ -13,9 +12,62 @@
             </div>
             <div class="col-2 text-end">
                 <a href="viewpost" class="btn btn-outline-primary btn-sm mb-1" target="_blank">View Post</a><br />
-                <a href="editpost" class="btn btn-outline-secondary btn-sm">Edit Post&nbsp;</a>
+                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit Post&nbsp;</a>
             </div>
         </div>
+        <!-- Edit form -->
+
+        <div class="modal" tabindex="-1" id="exampleModal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" [formGroup]="editpostForm" (ngSubmit)="editPost()">
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <input type="text" id="postTitle" placeholder="Title" class="col-12 " [(ngModel)]="Post.postTitle" formControlName="postTitle" />
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="submit" class="btn btn-warning" (click)="editPost()">
+                                            <i class="bi bi-box-arrow-in-right"></i>&nbsp;Save Changes
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-10">
+                                        <!-- <angular-editor [config]="config" id="postBody" formControlName="postBody"></angular-editor> -->
+                                        <!-- <input type="file" id="postBody" class="PostBody col-12 border border-warning" placeholder="Enter yout text here...."  formControlName="postBody" style="height: 30rem;"> -->
+                                        <!-- <input type="file" id="image" formControlName="image"> -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10 ">
+                                        <angular-editor [config]="config" id="postBody" [(ngModel)]="Post.postBody" formControlName="postBody"></angular-editor>
+                                        <!-- <textarea type="text" id="postBody" class="PostBody form-control col-12 border border-warning" placeholder="Enter yout text here...."  formControlName="postBody" style="height: 20rem;"></textarea> -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <input type="hidden" id="createdBy" class="form-control" formControlName="createdBy">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="editPost()" >Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
-
